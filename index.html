@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhotoEdit Lite</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-camera"></i>
+            </div>
+
+            <div>
+                <h1>PhotoEdit <span>Lite</span></h1>
+                <p>Simple. Beautiful. Powerful.</p>
+            </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <button class="icon-button" id="themeButton" title="Toggle theme">
+                <i class="fa-solid fa-sun"></i>
+            </button>
+
+            <button class="icon-button" id="moonButton" title="Dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <div class="version-badge">
+                v1.0.0
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= APPLICATION ================= -->
+
+    <main class="app">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <!-- Upload -->
+
+            <section class="sidebar-section upload-section">
+
+                <label
+                    for="imageInput"
+                    class="upload-button"
+                >
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    <span>Upload Image</span>
+                </label>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/png,image/jpeg,image/webp"
+                >
+
+                <p class="upload-info">
+                    JPG, PNG, WEBP up to 10MB
+                </p>
+
+            </section>
+
+
+            <!-- Adjustments -->
+
+            <section class="sidebar-section">
+
+                <div class="section-title">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Adjustments</span>
+                </div>
+
+
+                <!-- Brightness -->
+
+                <div class="slider-control">
+
+                    <div class="slider-header">
+
+                        <span>
+                            <i class="fa-regular fa-sun"></i>
+                            Brightness
+                        </span>
+
+                        <span
+                            class="value"
+                            id="brightnessValue"
+                        >
+                            100%
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="brightness"
+                        min="0"
+                        max="200"
+                        value="100"
+                    >
+
+                    <div class="range-labels">
+                        <span>0</span>
+                        <span>100</span>
+                        <span>200</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Contrast -->
+
+                <div class="slider-control">
+
+                    <div class="slider-header">
+
+                        <span>
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                            Contrast
+                        </span>
+
+                        <span
+                            class="value"
+                            id="contrastValue"
+                        >
+                            100%
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="contrast"
+                        min="0"
+                        max="200"
+                        value="100"
+                    >
+
+                    <div class="range-labels">
+                        <span>0</span>
+                        <span>100</span>
+                        <span>200</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Grayscale -->
+
+                <div class="slider-control">
+
+                    <div class="slider-header">
+
+                        <span>
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                            Grayscale
+                        </span>
+
+                        <span
+                            class="value"
+                            id="grayscaleValue"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="grayscale"
+                        min="0"
+                        max="100"
+                        value="0"
+                    >
+
+                    <div class="range-labels">
+                        <span>0</span>
+                        <span>50</span>
+                        <span>100</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Blur -->
+
+                <div class="slider-control">
+
+                    <div class="slider-header">
+
+                        <span>
+                            <i class="fa-solid fa-droplet"></i>
+                            Blur
+                        </span>
+
+                        <span
+                            class="value"
+                            id="blurValue"
+                        >
+                            0px
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="blur"
+                        min="0"
+                        max="10"
+                        value="0"
+                    >
+
+                    <div class="range-labels">
+                        <span>0</span>
+                        <span>5</span>
+                        <span>10</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Transform -->
+
+            <section class="sidebar-section">
+
+                <div class="section-title">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Transform</span>
+                </div>
+
+                <div class="transform-grid">
+
+                    <button
+                        class="tool-button active"
+                        id="rotateButton"
+                    >
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>Rotate</span>
+                    </button>
+
+
+                    <button
+                        class="tool-button"
+                        id="flipHorizontalButton"
+                    >
+                        <i class="fa-solid fa-arrows-left-right"></i>
+                        <span>Flip H</span>
+                    </button>
+
+
+                    <button
+                        class="tool-button"
+                        id="flipVerticalButton"
+                    >
+                        <i class="fa-solid fa-arrows-up-down"></i>
+                        <span>Flip V</span>
+                    </button>
+
+
+                    <button
+                        class="tool-button"
+                        id="resetButton"
+                    >
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                        <span>Reset</span>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Download -->
+
+            <section class="download-section">
+
+                <button
+                    class="download-button"
+                    id="downloadButton"
+                >
+
+                    <i class="fa-solid fa-download"></i>
+
+                    Download Image
+
+                </button>
+
+                <p>PNG Format</p>
+
+            </section>
+
+        </aside>
+
+
+        <!-- ================= WORKSPACE ================= -->
+
+        <section class="workspace">
+
+            <!-- Preview Card -->
+
+            <div class="preview-card">
+
+                <div class="preview-header">
+
+                    <div>
+
+                        <h2>
+                            <i class="fa-regular fa-eye"></i>
+                            Preview
+                        </h2>
+
+                        <p>
+                            Edit your image in real-time
+                        </p>
+
+                    </div>
+
+
+                    <div class="zoom-controls">
+
+                        <button id="zoomOut">
+                            −
+                        </button>
+
+                        <span id="zoomValue">
+                            100%
+                        </span>
+
+                        <button id="zoomIn">
+                            +
+                        </button>
+
+                        <button id="fullscreenButton">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Canvas -->
+
+                <div
+                    class="canvas-wrapper"
+                    id="canvasWrapper"
+                >
+
+                    <canvas id="canvas"></canvas>
+
+
+                    <div
+                        id="placeholder"
+                        class="placeholder"
+                    >
+
+                        <div class="placeholder-icon">
+
+                            <i class="fa-regular fa-image"></i>
+
+                        </div>
+
+                        <h3>
+                            No image selected
+                        </h3>
+
+                        <p>
+                            Upload an image to start editing
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Feature Cards -->
+
+            <div class="features">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <div>
+                        <h3>Fast & Lightweight</h3>
+
+                        <p>
+                            Image processing happens directly
+                            in your browser.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+                        <h3>Privacy First</h3>
+
+                        <p>
+                            Your images stay on your device
+                            while you edit.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+
+                    <div>
+                        <h3>Easy to Use</h3>
+
+                        <p>
+                            Simple tools for beautiful
+                            results.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <span>
+            PhotoEdit Lite
+        </span>
+
+        <span>
+            •
+        </span>
+
+        <span>
+            v1.0.0
+        </span>
+
+        <span>
+            •
+        </span>
+
+        <span>
+            Runs entirely in your browser
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
