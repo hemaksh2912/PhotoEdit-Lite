@@ -25,8 +25,10 @@ PhotoEdit Lite is a lightweight browser-based image editing application develope
 
 ## Version
 
-v1.0.0
+v1.0.1
 
 ## Purpose
 
 PhotoEdit Lite is used as a controlled software artifact for testing the BlockVerify blockchain-based software integrity and provenance verification system.
+
+# VersionUp
